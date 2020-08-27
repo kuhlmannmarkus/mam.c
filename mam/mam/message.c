@@ -797,13 +797,14 @@ retcode_t mam_msg_read_packet(mam_msg_read_context_t *const ctx, trits_t *const 
   /*  absorb oneof checksum */
   ERR_BIND_GOTO(pb3_unwrap_absorb_tryte(&ctx->spongos, buffer, &checksum), e, cleanup);
 
-  if (MAM_MSG_CHECKSUM_NONE == checksum) {
-    /*    absorb null none = 0; */
-    ERR_BIND_GOTO(mam_msg_unwrap_checksum_none(), e, cleanup);
-  } else if (MAM_MSG_CHECKSUM_MAC == checksum) {
-    /*    MAC mac = 1; */
-    ERR_BIND_GOTO(mam_msg_unwrap_checksum_mac(&ctx->spongos, buffer), e, cleanup);
-  } else if (MAM_MSG_CHECKSUM_SIG == checksum) {
+  //if (MAM_MSG_CHECKSUM_NONE == checksum) {
+  //  /*    absorb null none = 0; */
+  //  ERR_BIND_GOTO(mam_msg_unwrap_checksum_none(), e, cleanup);
+  //} else if (MAM_MSG_CHECKSUM_MAC == checksum) {
+  //  /*    MAC mac = 1; */
+  //  ERR_BIND_GOTO(mam_msg_unwrap_checksum_mac(&ctx->spongos, buffer), e, cleanup);
+  //} else
+  if (MAM_MSG_CHECKSUM_SIG == checksum) {
     mam_spongos_t spongos_mss;
     /*    MSSig mssig = 2; */
     ERR_BIND_GOTO(mam_msg_unwrap_checksum_mssig(&ctx->spongos, buffer, &spongos_mss,
