@@ -346,6 +346,13 @@ retcode_t mam_api_add_ntru_pk(mam_api_t *const api, mam_ntru_pk_t const *const n
   return mam_ntru_pk_t_set_add(&api->ntru_pks, ntru_pk);
 }
 
+retcode_t mam_api_remove_ntru_pk(mam_api_t *const api, mam_ntru_pk_t const *const ntru_pk) {
+  if (api == NULL || ntru_pk == NULL) {
+    return RC_NULL_PARAM;
+  }
+  return mam_ntru_pk_t_set_remove(&api->ntru_pks, ntru_pk);
+}
+
 retcode_t mam_api_add_psk(mam_api_t *const api, mam_psk_t const *const psk) {
   if (api == NULL || psk == NULL) {
     return RC_NULL_PARAM;

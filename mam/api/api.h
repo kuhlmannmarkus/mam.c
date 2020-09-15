@@ -106,6 +106,16 @@ MAM_EXPORT retcode_t mam_api_add_ntru_sk(mam_api_t *const api, mam_ntru_sk_t con
  */
 MAM_EXPORT retcode_t mam_api_add_ntru_pk(mam_api_t *const api, mam_ntru_pk_t const *const ntru_pk);
 
+/**                                                                                                                                                                                                                                                                            
+ * Remove a NTRU public key from api's NTRU pks set                                                                                                                                                                                                                                 
+ *                                                                                                                                                                                                                                                                             
+ * @param api - The API [in,out]                                                                                                                                                                                                                                               
+ * @param ntru_pk - An existing ntru public key (allows for encryption only) [in]                                                                                                                                                                                                    
+ *                                                                                                                                                                                                                                                                             
+ * @return return code                                                                                                                                                                                                                                                         
+ */
+MAM_EXPORT retcode_t mam_api_remove_ntru_pk(mam_api_t *const api, mam_ntru_pk_t const *const ntru_pk);
+
 /**
  * Add a pre shared key to api's psks set
  *
